@@ -5,17 +5,10 @@ class CoursesController < ApplicationController
     render({ :template => "courses/index" })
   end
 
-  def show
-    the_id = params.fetch("path_id")
-    @course = Course.where({:id => the_id }).at(0)
-
-    render({ :template => "courses/show" })
-  end
-
   def create
     @course = Course.new
     @course.title = params.fetch("query_title")
-    @course.term_offered = params.fetch("query_term_")
+    @course.term_offered = params.fetch("query_term_offered")
     @course.department_id = params.fetch("query_department_id")
 
     if @course.valid?
@@ -24,6 +17,13 @@ class CoursesController < ApplicationController
     else
       redirect_to("/courses", { :notice => "Course failed to create successfully." })
     end
+  end
+
+  def show
+    the_id = params.fetch("path_id")
+    @course = Course.where({:id => the_id }).at(0)
+
+    render({ :template => "courses/show" })
   end
 
   def update
@@ -43,8 +43,9 @@ class CoursesController < ApplicationController
   end
 
   def destroy
-    the_id = params.fetch("path")
-    @course = Course.where({ :id => the_id }).at(0)
+    the_id = params.fetch("path_id")
+    matching_records = Course.where({ :path_id => the_id })
+    @course = matching_records.at(0)
 
     @course.destroy
 
