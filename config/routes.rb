@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   
   post("/modify_department/:path_id", { :controller => "departments", :action => "update" })
 
-  get("/delete_department/:path_id", { :controller => "departments", :action => "destroy" })
+  get("/delete_department/:id", { :controller => "departments", :action => "destroy" })
 
   #------------------------------
   # Course routes
@@ -28,9 +28,9 @@ Rails.application.routes.draw do
   
   #get("/courses", { :controller => "courses_controller", :action => "index" })
   
-  get("/modify_course/:path_id", { :controller => "courses", :action => "update" })
+  get("/modify_course/:id", { :controller => "courses", :action => "update" })
 
-  get("/delete_course/:path_id", { :controller => "courses", :action => "destroy" })
+  get("/delete_course/:id", { :controller => "courses", :action => "destroy" })
 
   #------------------------------
   # Student routes
