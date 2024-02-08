@@ -10,7 +10,7 @@
       Title
     </label>
 
-    <input type="text" id="title_b" name="q_title">
+    <input type="text" id="title_box" name="query_title">
   </div>
 
   <div>
@@ -18,7 +18,7 @@
       Term offered
     </label>
 
-    <input type="text" id="term_offered_box" name="query_term">
+    <input type="text" id="term_offered_box" name="query_term_offered">
   </div>
 
   <div>
@@ -64,22 +64,22 @@
     </th>
   </tr>
 
-  <% @course.each do |course| %>
+  <% @course.each do |@course| %>
     <tr>
       <td>
-        <%= course.id %>
+        <%= @course.id %>
       </td>
 
       <td>
-        <%= course.title %>
+        <%= @course.title %>
       </td>
 
       <td>
-        <%= course.term_offered %>
+        <%= @course.term_offered %>
       </td>
 
       <td>
-        <% department = department.where({ :id => course.department_id }).at(0) %>
+        <% department = department.where({ :id => @course.department_id }).at(0) %>
         <a href="/departments/<%= department.id %>"><%= department.name %></a>
       </td>
 
