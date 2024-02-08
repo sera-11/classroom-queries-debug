@@ -40,7 +40,7 @@ class DepartmentsController < ApplicationController
   end
 
   def destroy
-    the_id = params.fetch("path_id")
+    the_id = params.fetch("id")
     @department = Department.where({ :id => the_id }).at(0)
 
     @department.destroy
