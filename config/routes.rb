@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   
   #get("/courses", { :controller => "courses_controller", :action => "index" })
   
-  get("/modify_course/:id", { :controller => "courses", :action => "update" })
+  post("/modify_course/:id", { :controller => "courses", :action => "update" })
 
   get("/delete_course/:id", { :controller => "courses", :action => "destroy" })
 
